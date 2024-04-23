@@ -42,9 +42,9 @@ class LogEntryRepository extends DocumentRepository
      * Loads all log entries for the
      * given $document
      *
-     * @param object $document
-     * @param null|int $limit
-     * @param null|int $skip
+     * @param object   $document
+     * @param int|null $limit
+     * @param int|null $skip
      *
      * @return LogEntry[]
      *
@@ -174,17 +174,21 @@ class LogEntryRepository extends DocumentRepository
     /**
      * @param $value
      * @param $mapping
+     * 
      * @return object
      */
-    protected function fillEmbeddedDocument($value, $mapping) {
+    protected function fillEmbeddedDocument($value, $mapping)
+    {
         if (!empty($value)) {
             assert(class_exists($mapping['targetDocument']));
 
             $embeddedMetadata = $this->dm->getClassMetadata($mapping['targetDocument']);
             $document = $embeddedMetadata->newInstance();
             $this->fillDocument($document, $value);
+
             return $document;
         }
+        
         return $value;
     }
 

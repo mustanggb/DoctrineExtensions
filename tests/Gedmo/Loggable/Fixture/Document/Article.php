@@ -54,7 +54,7 @@ class Article implements Loggable
 
     /**
      * @ODM\EmbedMany(targetDocument="Gedmo\Tests\Loggable\Fixture\Document\Reference")
-     * 
+     *
      * @Gedmo\Versioned
      */
     #[ODM\EmbedMany(targetDocument: Reference::class)]

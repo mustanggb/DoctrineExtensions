@@ -90,7 +90,7 @@ final class LoggableDocumentTest extends BaseTestCaseMongoODM
         static::assertSame(
             [
                 ['reference' => 'https://www.wikipedia.org/', 'title' => 'wikipedia'],
-                ['reference' => 'https://github.com/Atlantic18/DoctrineExtensions', 'title' => 'DoctrineExtensions']
+                ['reference' => 'https://github.com/Atlantic18/DoctrineExtensions', 'title' => 'DoctrineExtensions'],
             ],
             $data['references']
         );
@@ -180,9 +180,9 @@ final class LoggableDocumentTest extends BaseTestCaseMongoODM
 
         // test get log entries
         $logEntries = $commentLogRepo->getLogEntries($comment);
-        $this->assertCount(6, $logEntries);
+        static::assertCount(6, $logEntries);
         $latest = array_shift($logEntries);
-        $this->assertEquals('update', $latest->getAction());
+        static::assertSame('update', $latest->getAction());
     }
 
     private function populate(): void
@@ -198,7 +198,7 @@ final class LoggableDocumentTest extends BaseTestCaseMongoODM
         $article = new RelatedArticle();
         $article->setTitle('a1-t-v1');
         $article->setContent('a1-c-v1');
-        $article->setReferences(array($ref0, $ref1));
+        $article->setReferences([$ref0, $ref1]);
 
         $author = new Author();
         $author->setName('John Doe');

@@ -114,7 +114,8 @@ class EntityWrapper extends AbstractWrapper
         return false;
     }
 
-    public function isEmbeddedCollectionAssociation($field) {
+    public function isEmbeddedCollectionAssociation($field)
+    {
         return false;
     }
 
