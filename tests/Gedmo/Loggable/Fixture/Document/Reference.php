@@ -18,7 +18,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ODM\EmbeddedDocument
- * 
+ *
  * @Gedmo\Loggable
  */
 #[ODM\EmbeddedDocument]
