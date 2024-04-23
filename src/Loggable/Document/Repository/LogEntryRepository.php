@@ -172,8 +172,8 @@ class LogEntryRepository extends DocumentRepository
     }
 
     /**
-     * @param $value
-     * @param $mapping
+     * @param array $value
+     * @param array $mapping
      *
      * @return object
      */
@@ -188,8 +188,6 @@ class LogEntryRepository extends DocumentRepository
 
             return $document;
         }
-
-        return $value;
     }
 
     /**

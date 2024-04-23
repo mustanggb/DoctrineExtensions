@@ -62,6 +62,8 @@ class RelatedArticle implements Loggable
     private ?ArrayCollection $comments = null;
 
     /**
+     * @var ?ArrayCollection<array-key, Reference>
+     *
      * @ODM\EmbedMany(targetDocument="Gedmo\Tests\Loggable\Fixture\Document\Reference")
      *
      * @Gedmo\Versioned
@@ -115,7 +117,7 @@ class RelatedArticle implements Loggable
         return $this->content;
     }
 
-    public function setReferences(?ArrayCollection $references)
+    public function setReferences(?ArrayCollection $references): void
     {
         $this->references = $references;
     }

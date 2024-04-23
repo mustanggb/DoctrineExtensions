@@ -53,6 +53,8 @@ class Article implements Loggable
     private ?Author $author = null;
 
     /**
+     * @var ?ArrayCollection<array-key, Reference>
+     *
      * @ODM\EmbedMany(targetDocument="Gedmo\Tests\Loggable\Fixture\Document\Reference")
      *
      * @Gedmo\Versioned
@@ -96,7 +98,7 @@ class Article implements Loggable
         return $this->author;
     }
 
-    public function setReferences(?ArrayCollection $references)
+    public function setReferences(?ArrayCollection $references): void
     {
         $this->references = $references;
     }
