@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Gedmo\Tests\Loggable\Fixture\Document;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Doctrine\ODM\MongoDB\Types\Type;
 use Gedmo\Loggable\Loggable;
@@ -54,7 +53,7 @@ class RelatedArticle implements Loggable
     private ?string $content = null;
 
     /**
-     * @var Collection<int, Comment>
+     * @var ?ArrayCollection<array-key, Comment>
      *
      * @ODM\ReferenceMany(targetDocument="Gedmo\Tests\Loggable\Fixture\Document\Comment", mappedBy="article")
      */
@@ -83,20 +82,6 @@ class RelatedArticle implements Loggable
         return $this->id;
     }
 
-    public function addComment(Comment $comment): void
-    {
-        $comment->setArticle($this);
-        $this->comments[] = $comment;
-    }
-
-    /**
-     * @return Collection<int, Comment>
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
     public function setTitle(?string $title): void
     {
         $this->title = $title;
@@ -117,11 +102,31 @@ class RelatedArticle implements Loggable
         return $this->content;
     }
 
+    public function addComment(Comment $comment): void
+    {
+        $comment->setArticle($this);
+        $this->comments[] = $comment;
+    }
+
+    /**
+     * @return ?ArrayCollection<array-key, Comment>
+     */
+    public function getComments(): ?ArrayCollection
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param ?ArrayCollection<array-key, Reference> $bids
+     */
     public function setReferences(?ArrayCollection $references): void
     {
         $this->references = $references;
     }
 
+    /**
+     * @return ?ArrayCollection<array-key, Reference>
+     */
     public function getReferences(): ?ArrayCollection
     {
         return $this->references;

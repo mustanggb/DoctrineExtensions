@@ -149,7 +149,7 @@ final class LoggableDocumentTest extends BaseTestCaseMongoODM
         static::assertSame('update', $latest->getAction());
     }
 
-    public function testVersionControlWithEmbedMany()
+    public function testVersionControlWithEmbedMany(): void
     {
         $this->populate();
         $commentLogRepo = $this->dm->getRepository(self::COMMENT_LOG);

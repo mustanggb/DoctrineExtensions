@@ -98,11 +98,17 @@ class Article implements Loggable
         return $this->author;
     }
 
+    /**
+     * @param ?ArrayCollection<array-key, Reference> $bids
+     */
     public function setReferences(?ArrayCollection $references): void
     {
         $this->references = $references;
     }
 
+    /**
+     * @return ?ArrayCollection<array-key, Reference>
+     */
     public function getReferences(): ?ArrayCollection
     {
         return $this->references;
