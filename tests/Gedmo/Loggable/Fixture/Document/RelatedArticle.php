@@ -114,4 +114,14 @@ class RelatedArticle implements Loggable
     {
         return $this->content;
     }
+
+    public function setReferences(?ArrayCollection $references)
+    {
+        $this->references = $references;
+    }
+
+    public function getReferences(): ?ArrayCollection
+    {
+        return $this->references;
+    }
 }

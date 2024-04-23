@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Gedmo\Tests\Loggable;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\EventManager;
 use Gedmo\Loggable\Document\LogEntry;
 use Gedmo\Loggable\Document\Repository\LogEntryRepository;
@@ -198,7 +199,7 @@ final class LoggableDocumentTest extends BaseTestCaseMongoODM
         $article = new RelatedArticle();
         $article->setTitle('a1-t-v1');
         $article->setContent('a1-c-v1');
-        $article->setReferences([$ref0, $ref1]);
+        $article->setReferences(new ArrayCollection([$ref0, $ref1]));
 
         $author = new Author();
         $author->setName('John Doe');
