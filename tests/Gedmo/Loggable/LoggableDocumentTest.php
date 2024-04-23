@@ -69,7 +69,7 @@ final class LoggableDocumentTest extends BaseTestCaseMongoODM
         $ref1->setReference('https://github.com/Atlantic18/DoctrineExtensions');
         $ref1->setTitle('DoctrineExtensions');
 
-        $art0->setReferences([$ref0, $ref1]);
+        $art0->setReferences(new ArrayCollection([$ref0, $ref1]));
 
         $this->dm->persist($art0);
         $this->dm->flush();
