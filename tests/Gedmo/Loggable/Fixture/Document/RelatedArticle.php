@@ -59,11 +59,21 @@ class RelatedArticle implements Loggable
      * @ODM\ReferenceMany(targetDocument="Gedmo\Tests\Loggable\Fixture\Document\Comment", mappedBy="article")
      */
     #[ODM\ReferenceMany(targetDocument: Comment::class, mappedBy: 'article')]
-    private $comments;
+    private ?ArrayCollection $comments = null;
+
+    /**
+     * @ODM\EmbedMany(targetDocument="Gedmo\Tests\Loggable\Fixture\Document\Reference")
+     * 
+     * @Gedmo\Versioned
+     */
+    #[ODM\EmbedMany(targetDocument: Reference::class)]
+    #[Gedmo\Versioned]
+    private ?ArrayCollection $references = null;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->references = new ArrayCollection();
     }
 
     public function getId(): ?string
