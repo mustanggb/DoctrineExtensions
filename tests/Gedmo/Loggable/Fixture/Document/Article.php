@@ -99,7 +99,7 @@ class Article implements Loggable
     }
 
     /**
-     * @param ?ArrayCollection<array-key, Reference> $bids
+     * @param ?ArrayCollection<array-key, Reference> $references
      */
     public function setReferences(?ArrayCollection $references): void
     {

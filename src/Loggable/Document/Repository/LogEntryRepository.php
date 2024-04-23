@@ -172,10 +172,10 @@ class LogEntryRepository extends DocumentRepository
     }
 
     /**
-     * @param array $value
-     * @param array $mapping
+     * @param array<string, mixed> $value
+     * @param array<string, mixed> $mapping
      *
-     * @return object
+     * @return ?object
      */
     protected function fillEmbeddedDocument($value, $mapping)
     {
@@ -188,6 +188,8 @@ class LogEntryRepository extends DocumentRepository
 
             return $document;
         }
+
+        return null;
     }
 
     /**
