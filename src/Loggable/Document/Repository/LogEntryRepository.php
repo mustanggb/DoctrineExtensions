@@ -174,7 +174,7 @@ class LogEntryRepository extends DocumentRepository
     /**
      * @param $value
      * @param $mapping
-     * 
+     *
      * @return object
      */
     protected function fillEmbeddedDocument($value, $mapping)
@@ -188,7 +188,7 @@ class LogEntryRepository extends DocumentRepository
 
             return $document;
         }
-        
+
         return $value;
     }
 
